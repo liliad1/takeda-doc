@@ -1,0 +1,50 @@
+Category: Request redirect and delegate
+
+Pattern 1: Redirect of applicant
+
+Description: Ticket returned to the original applicant who already leaved office or do not have the right to approve needs to be redirected to a new operator.
+
+Steps:
+
+1. Check the details of the ticket based on the infomation provided by the user, determine if the ticket's type is applying for an activity or payment.
+2. Use the K2 ticket delegate tools to confirm if the current node is the one handled by the original applicant, if not, the ticket can't be redirected.
+3. If yes, the line manager's approval mail is required by user.
+4. The ticket can be redirected to a new operator via the K2 ticket delegate tool once the approval mail is provided.
+
+Pattern 2: Redirect of approver
+
+Description: Ticket needs to be redirected to a new approver due to system configuration not up-to-date or report line issues or some other reasons.
+
+Steps:
+
+1. Check the details of the ticket based on the infomation provided by the user, determine if the ticket's type is applying for an activity, taking delivery or payment.
+2. Use the K2 ticket delegate tools to confirm if the current node is the one handled by the original approver, if not, the ticket can't be redirected.
+3. If yes, the approval mail from the new approver is required.
+4. The ticket can be redirected to a new approver via the K2 ticket delegate tool once the approval mail is provided.
+5. If the case is related to report line modification, the report line infomation needs to be confirmed and updated by financial department.
+6. If the case is related to functional department modification, the ralated system configuration needs to be checked and needs to confirm with financial department whether the system configuration needs to be modified.
+7. If a modification is required, it will be proceeded by the financial department.
+
+Pattern 3: Redirect of payment authority
+
+Description: Payment authority of a ticket needs to be redirected to a new operator due to the original applicant leaved office or some other reasons.
+
+Steps:
+
+1. Locate the ticket needs to be handled based on the infomation provided by the user.
+2. Confirm if the ticket's status meets the requirement of payment authority redirect.
+3. The approval mail from the line manager is required.
+4. Redirect the payment authority of the ticket.
+
+Pattern 4: Skip node
+
+Description: The node of K2 workflow needs to be adjusted due to some reason.
+
+Steps:
+
+1. Locate the ticket needs to be handled based on the infomation provided by the user, if the type is unlock activity, approval mail from the financial director is required. 
+2. Search the ticket's transmition status and the rules stored in DB, judge the rules and status of the process under the user's requirement.
+3. Update related DB columns such as timestamp and so on.
+4. Search the ticket via K2 console and skip the current node to the target node.
+5. Fetch the ticket's K2 workflow SN, load and update the workflow's field via K2 process field updating tool.
+6. Redirect the ticket via K2 ticket delegate tool.

@@ -1,0 +1,24 @@
+According to K2 China system's situation, the following use cases is possible to be automated:
+
+1. Asking about business policy(40 tickets per month).
+For example:
+User themselfs mistaken the data and can't be corrected in the backend. They need to ask for financial department's approval to correct it.
+Unlock the locked ticket, need line manager and financial department's approval.
+Want to unlock a ticket locked over 3 months, need department head or BU head's approval.
+One order number can be used to applying for only one taking delivery request at the same time.
+One order number can be used to applying for only one payment request at the same time.
+
+1. K2 system login account creating(20 tickets per month).
+Need user's department's HRBP to contact with financial department to resolve it.
+
+3. K2 system domain account creating(30 tickets per month).
+Create at backend manually.
+
+
+Factors need to be considered and blocking automation:
+1. EMS system provided a portal and contains over 40 sub systems, equal to 40 times of other applications, so the sum of tickets is so large.
+2. Most of EMS system's subs are related to finance and contain a large sum of high confidential data, so the financial director will control the DB operations quite strictly.
+3. EMS system is deployed on the AWS containing one web server which opened port 443 to the web, one application server limited to intranet and one AWS RDS instance only opened to the web server, can't be accessed by other process.
+4. Ticket transfer requires line manager and financial director's approval, every ticket may need some special manual operations, difficult to be automated.
+5. In the case of skipping node, need to review the status of ticket and source logic, then determine the next node and modify the DB and K2 agent data columns, difficult to be automated.
+6. Takeda's staff turnover is quite frequent, the applicant doesn't know how many tickets the previous staff had, need IT department to search out those tickets, determine the status and acquire the approval, difficult to be automated.

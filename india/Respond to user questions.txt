@@ -8,7 +8,7 @@ Want to unlock a ticket locked over 3 months, need department head or BU head's 
 One order number can be used to applying for only one taking delivery request at the same time.
 One order number can be used to applying for only one payment request at the same time.
 
-1. K2 system login account creating(20 tickets per month).
+2. K2 system login account creating(20 tickets per month).
 Need user's department's HRBP to contact with financial department to resolve it.
 
 3. K2 system domain account creating(30 tickets per month).
@@ -17,8 +17,15 @@ Create at backend manually.
 
 Factors need to be considered and blocking automation:
 1. EMS system provided a portal and contains over 40 sub systems, equal to 40 times of other applications, so the sum of tickets is so large.
-2. Most of EMS system's subs are related to finance and contain a large sum of high confidential data, so the financial director will control the DB operations quite strictly.
-3. EMS system is deployed on the AWS containing one web server which opened port 443 to the web, one application server limited to intranet and one AWS RDS instance only opened to the web server, can't be accessed by other process.
-4. Ticket transfer requires line manager and financial director's approval, every ticket may need some special manual operations, difficult to be automated.
-5. In the case of skipping node, need to review the status of ticket and source logic, then determine the next node and modify the DB and K2 agent data columns, difficult to be automated.
-6. Takeda's staff turnover is quite frequent, the applicant doesn't know how many tickets the previous staff had, need IT department to search out those tickets, determine the status and acquire the approval, difficult to be automated.
+2. Some tickets happened because of system bugs, these tickets can be saved once the bugs are fixed.
+3. Most of EMS system's subs are related to finance and contain a large sum of high confidential data, so the financial director will control the DB operations quite strictly.
+4. EMS system is deployed on the AWS containing one web server which opened port 443 to the web, one application server limited to intranet and one AWS RDS instance only opened to the web server, can't be accessed by other process.
+5. Ticket transfer requires line manager and financial director's approval, every ticket may need some special manual operations, difficult to be automated.
+6. In the case of skipping node, need to review the status of ticket and source logic, then determine the next node and modify the DB and K2 agent data columns, difficult to be automated.
+7. Takeda's staff turnover is quite frequent, the applicant doesn't know how many tickets the previous staff had, need IT department to search out those tickets, determine the status and acquire the approval, difficult to be automated.
+8. About 80% of 'respond to user questions' tickets need to debug source and query the ticket's data to determine the problem and solution. Also need to communicate with users continuely to locate and resolve the problem. Impossiable to be automated.
+9. Now the supporting process is users call or mail to L1 staffs, then they determine the applying type, create a ticket and assign to L2/L3 staffs. Need to confirm with end users if they accept to use automation tools to get the answer or still willling to contact with people.
+10. If any modification against EMS system and related programs, IT leader and BSO/APP Owner's approval is required.
+11. Users prefer to have some special staff to handle each sub process system, so that they can communicate with the L2/L3 staffs rapidly if some problem occured, and then have the L1 staffs to supply a ticket later.
+12. Since K2 team's shortage of human resources, supporting for technology is unavailable at the moment.
+13. Due to some business policy, the business group didn't do any knowledge transfer to K2 team. Have to contact with business group to get business policy related materials or some other infomation if we needed.
